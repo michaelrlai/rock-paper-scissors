@@ -40,12 +40,14 @@
 
             let playerScore = 0;
             let computerScore = 0;
+            let computerSelection;
+            let playerSelection;
 
             function game() {
                 for(i = 0; i < 5; i++) {
                 
-                    let computerSelection = computerPlay();
-                    let playerSelection = prompt('Rock, paper or scissors?');
+                    computerSelection = computerPlay();
+                    playerSelection = prompt('Rock, paper or scissors?');
                     
                     let winner = playRound(playerSelection, computerSelection);
                     if (winner === 'playerWins') {
