@@ -1,1 +1,1 @@
-Rock, paper, scissors game played with buttons, first to 5 wins
+Rock, paper, scissors game played with buttons, first to 5 winsgit

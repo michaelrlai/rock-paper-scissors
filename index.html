@@ -5,21 +5,13 @@
         <meta charset="UTF 8">
     </head>
     <body>
-        <div class="container">
-            <button id="Rock">Rock</button>
-            <button id="Paper">Paper</button>
-            <button id="Scissors">Scissors</button>
-        </div>
-        <br>
+
         <div id="cScore">Computer score: 0</div>
-        <br>
         <div id="pScore">Player score: 0</div>
-        <br>
         <br>
         <div id="pPlay">Computer played: </div>
         <br>
         <div id="rStatus"></div>
-        <br>
         <div id="gStatus"></div>
 
             
@@ -29,7 +21,7 @@
             function computerPlay() {
                 let x = ['Rock', 'Paper', 'Scissors'];
                 let y = x[Math.floor(Math.random() * x.length)];
-                pPlay.textContent = 'Computer player: ' + y;
+                pPlay.textContent = 'Computer played: ' + y;
                 return y;
             }
 
@@ -72,22 +64,51 @@
 
                 if (playerScore === 5) {
                     gStatus.textContent = 'Player wins the game!';
+                    alert('Player wins the game!');
                     return 'gameOver';
                 } else if (computerScore === 5) {
                     gStatus.textContent = 'Computer wins the game!';
+                    alert('Computer wins the game!');
                     return 'gameOver';
                 }
             }
 
             
 
-            const buttons = document.querySelectorAll('button');
+
             const pScore = document.querySelector('#pScore');
             const cScore = document.querySelector('#cScore');
             const pPlay = document.querySelector('#pPlay');
             const rStatus = document.querySelector('#rStatus');
             const gStatus = document.querySelector('#gStatus');
 
+
+            let container = document.createElement('div');
+            container.id = 'container';
+            document.body.insertBefore(container, cScore);
+
+            let rbutton = document.createElement('button');
+            rbutton.id = 'Rock';
+            rbutton.textContent = 'Rock';
+            container.appendChild(rbutton);
+
+            
+            let pbutton = document.createElement('button');
+            pbutton.id = 'Paper';
+            pbutton.textContent = 'Paper';
+            container.appendChild(pbutton);
+
+            let sbutton = document.createElement('button');
+            sbutton.id = 'Scissors';
+            sbutton.textContent = 'Scissors';
+            container.appendChild(sbutton);
+
+
+            
+            
+            let buttons = document.querySelectorAll('button');
+
+            
 
             let playerWins;
             let computerWins;
@@ -101,6 +122,12 @@
                 button.addEventListener('click', function() {
                     roundWinner = playRound(button.id);
                     gameStatus = updateScores(roundWinner);
+                    if (gameStatus === 'gameOver') {
+                        container.removeChild(rbutton);
+                        container.removeChild(pbutton);
+                        container.removeChild(sbutton);
+
+                    }
 
                 });
             });
