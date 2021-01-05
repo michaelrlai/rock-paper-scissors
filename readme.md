@@ -1,1 +1,1 @@
-Rock, paper, scissors game played completely in console
+Rock, paper, scissors game played with buttons, first to 5 wins
